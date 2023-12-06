@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>To do list interactive</title>
     <style>
+        /* Styles pour la mise en page générale */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -15,6 +16,7 @@
             height: 100vh;
         }
 
+        /* Styles pour le conteneur principal de la to-do list */
         #todo-container {
             width: 600px;
             background-color: #fff;
@@ -26,10 +28,12 @@
             align-items: center;
         }
 
+        /* Style pour le titre de la page */
         h1 {
             text-align: center;
         }
 
+        /* Styles pour le formulaire d'ajout de tâches */
         form {
             width: 100%;
             display: flex;
@@ -42,18 +46,21 @@
             margin-bottom: 10px;
         }
 
+        /* Styles pour le conteneur des listes de tâches */
         .tasks-container {
             width: 100%;
             display: flex;
             justify-content: space-between;
         }
 
+        /* Styles pour chaque liste de tâches (en cours et terminées) */
         .task-list {
             list-style-type: none;
             padding: 0;
             width: 48%;
         }
 
+        /* Styles pour chaque élément de liste de tâches */
         li {
             display: flex;
             justify-content: space-between;
@@ -66,6 +73,7 @@
             margin-right: 10px;
         }
 
+        /* Styles pour le bouton de suppression */
         .delete-button {
             background-color: #ff4444;
             color: #fff;
@@ -79,7 +87,10 @@
 
 <body>
     <div id="todo-container">
+        <!-- Titre de la page -->
         <h1>To-Do List</h1>
+
+        <!-- Formulaire pour ajouter de nouvelles tâches -->
         <form id="task-form">
             <label for="title">Titre :</label>
             <input type="text" id="title" required>
@@ -87,10 +98,15 @@
             <input type="text" id="description" required>
             <button type="button" onclick="addTask()">Ajouter</button>
         </form>
+
+        <!-- Conteneur pour les listes de tâches -->
         <div class="tasks-container">
+            <!-- Liste de tâches en cours -->
             <ul id="task-list-in-progress" class="task-list">
                 <h2>Tâches en cours</h2>
             </ul>
+
+            <!-- Liste de tâches terminées -->
             <ul id="task-list-completed" class="task-list">
                 <h2>Tâches terminées</h2>
             </ul>
@@ -98,18 +114,24 @@
     </div>
 
     <script>
+        // Fonction pour ajouter une nouvelle tâche
         function addTask() {
             const title = document.getElementById("title").value;
             const description = document.getElementById("description").value;
 
             if (title && description) {
+                // Récupération des listes de tâches en cours et terminées
                 const taskListInProgress = document.getElementById("task-list-in-progress");
                 const taskListCompleted = document.getElementById("task-list-completed");
 
+                // Création d'un nouvel élément de liste (li)
                 const li = document.createElement("li");
 
+                // Création de la case à cocher pour marquer la tâche comme terminée
                 const checkbox = document.createElement("input");
                 checkbox.type = "checkbox";
+
+                // Ajout d'un écouteur d'événements pour déplacer la tâche vers la liste appropriée
                 checkbox.addEventListener("change", function () {
                     if (checkbox.checked) {
                         taskListCompleted.appendChild(li);
@@ -118,9 +140,11 @@
                     }
                 });
 
+                // Création d'un élément contenant les détails de la tâche
                 const taskInfo = document.createElement("div");
                 taskInfo.innerHTML = `<strong>${title}</strong>: ${description}`;
 
+                // Création du bouton de suppression de la tâche
                 const deleteButton = document.createElement("button");
                 deleteButton.className = "delete-button";
                 deleteButton.innerHTML = "Supprimer";
@@ -128,13 +152,15 @@
                     li.remove();
                 };
 
+                // Ajout des éléments à l'élément de liste (li)
                 li.appendChild(checkbox);
                 li.appendChild(taskInfo);
                 li.appendChild(deleteButton);
 
+                // Ajout de la tâche à la liste en cours
                 taskListInProgress.appendChild(li);
 
-                // Clear input fields
+                // Effacement des champs de saisie
                 document.getElementById("title").value = "";
                 document.getElementById("description").value = "";
             }
@@ -142,5 +168,3 @@
     </script>
 </body>
 </html>
-
-    
