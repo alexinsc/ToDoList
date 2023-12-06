@@ -7,4 +7,4 @@
 		echo $ligne['civilite'] . ' ' . $ligne['prenom'] . ' ' . $ligne['nom'] . ' ' . $ligne['email'] . ' ' . $ligne['date_naissance'] . '<br>';
 	}
 	$mysqli->close();
-?>
+?>dzd
