@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>To do list interactive</title>
+    <link href="styles.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
@@ -10,14 +11,28 @@
         <!-- Titre de la page -->
         <h1>To-Do List</h1>
 
-        <!-- Formulaire pour ajouter de nouvelles tâches -->
-        <form id="task-form">
-            <label for="title">Titre :</label>
-            <input type="text" id="title" required>
-            <label for="description">Description :</label>
-            <input type="text" id="description" required>
-            <button type="button" onclick="addTask()">Ajouter</button>
-        </form>
+        <form method="post" action="creation.php" id="task-form">
+            <fieldset>
+                <p>
+                    <label for="titre">Titre :</label>
+                    <input type="text" name="titre" required="required" autofocus id="titre" placeholder="Tache 1" />
+                    <span id="Titre manquant"></span>
+                </p>
+                <p>
+                    <label for="description">Description :</label>
+                    <input type="text" name="description" required="required" id="description" placeholder="Description de la tâche" />
+                    <span id="description_manquante"></span>
+                </p>
+                <p>
+                    <label for="etat">Etat :</label>
+                    <select name="etat" id="etat">
+                        <option value="en_cours">En cours</option>
+                        <option value="a_faire">A faire</option>
+                        <option value="termine">Terminé</option>
+                    </select>
+            </p>
+            </fieldset>
+            <input type="submit" id ="submit" value="Créer" />
 
         <!-- Conteneur pour les listes de tâches -->
         <div class="tasks-container">
