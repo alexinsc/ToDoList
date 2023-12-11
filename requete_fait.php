@@ -4,7 +4,7 @@ try {
     $connexion = new PDO("mysql:host=localhost;dbname=wd-projet", 'root');
 
     // Préparation de la requête SQL
-    $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches");
+    $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'Terminé'");
     $requete->execute();
 
     // Vérification s'il y a des résultats
