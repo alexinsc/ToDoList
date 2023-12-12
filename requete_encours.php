@@ -37,3 +37,34 @@ try {
 // Fermeture de la connexion à la base de données (si nécessaire)
 $connexion = null;
 ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Résultat de la requête PHP</title>
+    <style>
+        /* Style pour le tableau */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            /* Ajoutez d'autres styles selon vos besoins */
+        }
+
+        /* Style pour les cellules */
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            /* Autres styles */
+        }
+
+        /* Style pour l'en-tête du tableau */
+        th {
+            background-color: #f2f2f2;
+            /* Autres styles */
+        }
+
+        /* Autres styles personnalisés pour le tableau */
+        /* ... */
+    </style>
+</head>
+</html>

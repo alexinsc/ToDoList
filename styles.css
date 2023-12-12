@@ -51,10 +51,8 @@ input[type="submit"] {
     margin-top: 50px;
 }
 
-/* Style des conteneurs des tableaux individuels */
-.table-container {
-    width: 30%;
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-
+h2 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}   
