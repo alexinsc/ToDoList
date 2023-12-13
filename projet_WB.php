@@ -46,11 +46,19 @@
                         $connexion = new PDO("mysql:host=localhost:3307;dbname=wd-projet", 'root');
 
                         // Préparation de la requête SQL
-                        $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE ID = ?");
+                        $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'a_faire'");
                         $requete->execute();
 
                         // Vérification s'il y a des résultats
                         if ($requete->rowCount() > 0) {
+                            // Affichage des données dans un tableau HTML
+                            echo "<table border='1'>
+                            <tr>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Etat</th>
+                            </tr>";
+
                             // Boucle pour parcourir les résultats de la requête
                             while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
                                 echo "<tr>";
@@ -67,10 +75,9 @@
                     } catch (PDOException $e) {
                         echo "Erreur : " . $e->getMessage();
                     }
-
-                    // Fermeture de la connexion à la base de données (si nécessaire)
-                    $connexion = null;
-                    ?>
+                // Fermeture de la connexion à la base de données (si nécessaire)
+                $connexion = null;
+                ?>
             </div> 
         
             <!-- Liste de tâches terminées -->
@@ -79,7 +86,7 @@
                 <?php
                     try {
                         // Connexion à la base de données MySQL avec PDO
-                        $connexion = new PDO("mysql:host=localhost:3307;dbname=wd-projet", 'root');
+                        $connexion = new PDO("mysql:host=localhost;dbname=wd-projet", 'root');
 
                         // Préparation de la requête SQL
                         $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'en_cours'");
@@ -87,6 +94,13 @@
 
                         // Vérification s'il y a des résultats
                         if ($requete->rowCount() > 0) {
+                            // Affichage des données dans un tableau HTML
+                            echo "<table border='1'>
+                            <tr>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Etat</th>
+                            </tr>";
 
                             // Boucle pour parcourir les résultats de la requête
                             while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
@@ -115,7 +129,7 @@
                 <?php
                     try {
                         // Connexion à la base de données MySQL avec PDO
-                        $connexion = new PDO("mysql:host=localhost:3307;dbname=wd-projet", 'root');
+                        $connexion = new PDO("mysql:host=localhost;dbname=wd-projet", 'root');
 
                         // Préparation de la requête SQL
                         $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'Terminé'");
@@ -123,6 +137,13 @@
 
                         // Vérification s'il y a des résultats
                         if ($requete->rowCount() > 0) {
+                            // Affichage des données dans un tableau HTML
+                            echo "<table border='1'>
+                            <tr>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Etat</th>
+                            </tr>";
 
                             // Boucle pour parcourir les résultats de la requête
                             while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
@@ -143,7 +164,7 @@
 
                     // Fermeture de la connexion à la base de données (si nécessaire)
                     $connexion = null;
-                ?> 
+                ?>
             </div>  
         </div>
 </body>

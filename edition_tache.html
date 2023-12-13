@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>To do list interactive</title>
+    <link href="styles.css" type="text/css" rel="stylesheet">
+    <button onclick="window.location.href = 'http://localhost/projetWD/projet_WB.html';" class="changement">Ajouter une tâche</button>
+    <button onclick="window.location.href = 'http://localhost/projetWD/edition_tache.html';" class="changement">Modifier une tâche</button>
+    <button onclick="window.location.href = 'https://fr.w3docs.com/';" class="changement">Supprimer une tâche</button>
+</head>
+
+<body>
+        <!-- Titre de la page -->
+        <h1>To-Do List</h1>
+        <form method="post" action="creation.php" id="task-form">
+            <fieldset>
+                <p>
+                    <label for="id">Sélectionner une tâche : </label>
+                    <select name="tache" id="tache">
+                        <iframe src="edition.php" width="100%" height="400px" frameborder="0"></iframe>
+                    </select>
+                </p>
+                <p>
+                    <label for="titre">Titre :</label>
+                    <input type="text" name="titre" required="required" autofocus id="titre" placeholder="Tâche 1" />
+                    <span id="Titre manquant"></span>
+                </p>
+                <p>
+                    <label for="description">Description :</label>
+                    <input type="text" name="description" required="required" id="description" placeholder="Description de la tâche" />
+                    <span id="description_manquante"></span>
+                </p>
+                <p>
+                    <label for="etat">Etat :</label>
+                    <select name="etat" id="etat">
+                        <option value="en_cours">En cours</option>
+                        <option value="a_faire">A faire</option>
+                        <option value="termine">Terminé</option>
+                    </select>
+                </p>
+            </fieldset>
+            <input type="submit" id ="submit" value="Créer" />
+        </form>
+
+        <div class="tasks-container">
+            <!-- Liste de tâches en cours -->
+            <div>
+                <h2>Tâches à faire</h2>
+                <iframe src="requete_afaire.php" width="100%" height="400px" frameborder="0"></iframe>
+            </div>  
+        
+            <!-- Liste de tâches terminées -->
+            <div>
+                <h2>Tâches en cours</h2>
+                <iframe src="requete_encours.php" width="100%" height="400px" frameborder="0"></iframe>
+            </div>  
+
+            <div>
+                <h2>Tâches terminées</h2>
+                <iframe src="requete_fait.php" width="100%" height="400px" frameborder="0"></iframe>
+            </div>  
+        </div>
+</body>
+</html>
