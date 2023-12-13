@@ -1,5 +1,6 @@
 <?php $connexion = new PDO("mysql:host=localhost;dbname=wd-projet", 'root'); ?>
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
