@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <title>To do list interactive</title>
     <link href="styles.css" type="text/css" rel="stylesheet">
-    <button onclick="window.location.href = 'http://localhost/projetWD/projet_WB.html';" class="changement">Ajouter une tâche</button>
-    <button onclick="window.location.href = 'http://localhost/projetWD/edition_tache.html';" class="changement">Modifier une tâche</button>
-    <button onclick="window.location.href = 'https://fr.w3docs.com/';" class="changement">Supprimer une tâche</button>
+    <button onclick="window.location.href = 'http://localhost/projetWD/projet_WB.php';" class="changement">Ajouter une tâche</button>
+    <button onclick="window.location.href = 'http://localhost/projetWD/edition_tache.php';" class="changement">Modifier une tâche</button>
+    <button onclick="window.location.href = 'http://localhost/projetWD/projet_WB.php';" class="changement">Supprimer une tâche</button>
 </head>
 
 <body>
