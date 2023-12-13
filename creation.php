@@ -8,7 +8,7 @@ try {
 
     $stmt = $pdo->prepare("INSERT INTO taches (Nom, Description, Etat) VALUES (?, ?, ?)");
 	$stmt->execute([$titre, $description, $etat]);
-	header('Location: http://localhost/projetWD/projet_WB.html');
+	header('Location: http://localhost/projetWD/projet_WB.php');
 	exit();
 
     } catch (\Throwable $th) {
