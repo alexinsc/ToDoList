@@ -54,84 +54,51 @@
                     <tr>
                         <td><?php echo $ligne['Nom']; ?></td>
                         <td><?php echo $ligne['Description']; ?></td>
-                        <td><?php echo $ligne['Etat']; ?></td>
+                        <td><?php echo "A faire"; ?></td>
                     </tr>
                     <?php } ?>
                 </table>
             </div>  
         
-            <!-- Liste de tâches terminées -->
+            <!-- Liste de tâches en cours -->
             <div>
                 <h2>Tâches en cours</h2>
-                <?php
-                    try {
-                        $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'en_cours'");
-                        $requete->execute();
-
-                        // Vérification s'il y a des résultats
-                        if ($requete->rowCount() > 0) {
-                            // Affichage des données dans un tableau HTML
-                            echo "<table border='1'>
-                            <tr>
-                            <th>Nom</th>
-                            <th>Description</th>
-                            <th>Etat</th>
-                            </tr>";
-
-                            // Boucle pour parcourir les résultats de la requête
-                            while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
-                                echo "<tr>";
-                                echo "<td>" . $ligne['Nom'] . "</td>";
-                                echo "<td>" . $ligne['Description'] . "</td>";
-                                echo "<td>" . $ligne['Etat'] . "</td>";
-                                echo "</tr>";
-                            }
-
-                            echo "</table>";
-                        } else {
-                            echo "Aucun résultat trouvé.";
-                        }
-                    } catch (PDOException $e) {
-                        echo "Erreur : " . $e->getMessage();
-                    }
-                ?>
+                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'en_cours'");
+                        $requete->execute(); ?>
+                <table border="1">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Etat</th>
+                    </tr>
+                    <?php while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) { ?>
+                    <tr>
+                        <td><?php echo $ligne['Nom']; ?></td>
+                        <td><?php echo $ligne['Description']; ?></td>
+                        <td><?php echo "En cours"; ?></td>
+                    </tr>
+                    <?php } ?>
+                </table>
             </div>  
 
             <div>
                 <h2>Tâches terminées</h2>
-                <?php
-                    try {
-                        // Préparation de la requête SQL
-                        $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'Terminé'");
-                        $requete->execute();
-
-                        // Vérification s'il y a des résultats
-                        if ($requete->rowCount() > 0) {
-                            // Affichage des données dans un tableau HTML
-                            echo "<table border='1'>
-                            <tr>
-                            <th>Nom</th>
-                            <th>Description</th>
-                            <th>Etat</th>
-                            </tr>";
-
-                            // Boucle pour parcourir les résultats de la requête
-                            while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
-                                echo "<tr>";
-                                echo "<td>" . $ligne['Nom'] . "</td>";
-                                echo "<td>" . $ligne['Description'] . "</td>";
-                                echo "<td>" . $ligne['Etat'] . "</td>";
-                                echo "</tr>";
-                            }
-
-                            echo "</table>";
-                        } else {
-                            echo "Aucun résultat trouvé.";
-                        }
-                    } catch (PDOException $e) {
-                        echo "Erreur : " . $e->getMessage();
-                    }
-                ?>
+                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'fait'");
+                        $requete->execute(); ?>
+                <table border="1">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Etat</th>
+                    </tr>
+                    <?php while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) { ?>
+                    <tr>
+                        <td><?php echo $ligne['Nom']; ?></td>
+                        <td><?php echo $ligne['Description']; ?></td>
+                        <td><?php echo "Terminée"; ?></td>
+                    </tr>
+                    <?php } ?>
+                </table>
             </div>  
         </div>
 </body>

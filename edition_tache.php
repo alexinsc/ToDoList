@@ -1,3 +1,5 @@
+<?php $connexion = new PDO("mysql:host=localhost;dbname=wd-projet", 'root'); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,7 +19,6 @@
                 <p>
                     <label for="id">Sélectionner une tâche : </label>
                     <select name="tache" id="tache">
-                        <iframe src="edition.php" width="100%" height="400px" frameborder="0"></iframe>
                     </select>
                 </p>
                 <p>
@@ -46,18 +47,63 @@
             <!-- Liste de tâches en cours -->
             <div>
                 <h2>Tâches à faire</h2>
-                <iframe src="requete_afaire.php" width="100%" height="400px" frameborder="0"></iframe>
+                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'a_faire'");
+                        $requete->execute(); ?>
+                <table border="1">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Etat</th>
+                    </tr>
+                    <?php while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) { ?>
+                    <tr>
+                        <td><?php echo $ligne['Nom']; ?></td>
+                        <td><?php echo $ligne['Description']; ?></td>
+                        <td><?php echo "A faire"; ?></td>
+                    </tr>
+                    <?php } ?>
+                </table>
             </div>  
         
-            <!-- Liste de tâches terminées -->
+            <!-- Liste de tâches en cours -->
             <div>
                 <h2>Tâches en cours</h2>
-                <iframe src="requete_encours.php" width="100%" height="400px" frameborder="0"></iframe>
+                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'en_cours'");
+                        $requete->execute(); ?>
+                <table border="1">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Etat</th>
+                    </tr>
+                    <?php while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) { ?>
+                    <tr>
+                        <td><?php echo $ligne['Nom']; ?></td>
+                        <td><?php echo $ligne['Description']; ?></td>
+                        <td><?php echo "En cours"; ?></td>
+                    </tr>
+                    <?php } ?>
+                </table>
             </div>  
 
             <div>
                 <h2>Tâches terminées</h2>
-                <iframe src="requete_fait.php" width="100%" height="400px" frameborder="0"></iframe>
+                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'fait'");
+                        $requete->execute(); ?>
+                <table border="1">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Etat</th>
+                    </tr>
+                    <?php while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) { ?>
+                    <tr>
+                        <td><?php echo $ligne['Nom']; ?></td>
+                        <td><?php echo $ligne['Description']; ?></td>
+                        <td><?php echo "Terminée"; ?></td>
+                    </tr>
+                    <?php } ?>
+                </table>
             </div>  
         </div>
 </body>
