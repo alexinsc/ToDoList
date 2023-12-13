@@ -4,7 +4,7 @@ $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
 $etat = filter_input(INPUT_POST, 'etat', FILTER_SANITIZE_STRING);
 
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=wd-projet", "root");
+    $pdo = new PDO("mysql:host=localhost:3307;dbname=wd-projet", "root");
 
     $stmt = $pdo->prepare("INSERT INTO taches (Nom, Description, Etat) VALUES (?, ?, ?)");
 	$stmt->execute([$titre, $description, $etat]);
