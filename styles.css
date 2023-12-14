@@ -9,6 +9,10 @@
     --rose: #ff7b9c;            /* Rose doux */
 }
 
+#photo {
+    width: 15px;
+}
+
 /* Fond de couleur neutre */
 body {
     background-color: #eaeaea;  /* Gris moyen */
