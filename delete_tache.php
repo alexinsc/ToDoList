@@ -1,5 +1,6 @@
 <?php $connexion = new PDO("mysql:host=localhost;dbname=wd-projet", 'root'); ?>
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,28 +15,23 @@
 <body>
         <!-- Titre de la page -->
         <h1>To-Do List</h1>
-        <form method="post" action="creation.php" id="task-form">
+        <form method="post" action="delete.php" id="task-form">
             <fieldset>
                 <p>
-                    <label for="titre">Titre :</label>
-                    <input type="text" name="titre" required="required" autofocus id="titre" placeholder="Tâche 1" />
-                    <span id="Titre manquant"></span>
-                </p>
-                <p>
-                    <label for="description">Description :</label>
-                    <input type="text" name="description" required="required" id="description" placeholder="Description de la tâche" />
-                    <span id="description_manquante"></span>
-                </p>
-                <p>
-                    <label for="etat">Etat :</label>
-                    <select name="etat" id="etat">
-                        <option value="a_faire">A faire</option>
-                        <option value="en_cours">En cours</option>
-                        <option value="termine">Terminé</option>
+                    <select id="tache-select" name="id_tache"> <!-- Ajout de l'attribut 'name' -->
+                        <option value="">Sélectionner une tâche</option>
+                        <?php
+                        $requete = $connexion->prepare("SELECT ID, Nom, Description FROM taches");
+                        $requete->execute();
+                        while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
+                            echo '<option value="' . $ligne['ID'] . '">' . $ligne['Nom'] . ' : ' . $ligne['Description'] . '</option>';
+                        }
+                        ?>
                     </select>
                 </p>
+                <!-- Suppression de la balise <p> en trop -->
             </fieldset>
-            <input type="submit" id ="submit" value="Créer" />
+            <input type="submit" id="submit" value="Supprimer" onclick="return validateForm()" />
         </form>
 
         <div class="tasks-container">
@@ -103,3 +99,15 @@
         </div>
 </body>
 </html>
+
+<script>
+    function validateForm() {
+        var selectedTask = document.getElementById("tache-select").value;
+        if (selectedTask === "") {
+            alert("Veuillez sélectionner une tâche");
+            return false; // Empêche la soumission du formulaire si aucune tâche n'est sélectionnée
+        }
+        document.getElementById("id_tache").value = selectedTask; // Place la valeur sélectionnée dans le champ caché
+        return true; // Soumet le formulaire si une tâche est sélectionnée
+    }
+</script>
