@@ -19,7 +19,10 @@
             <fieldset>
                 <p>
                     <label for="id">Sélectionner une tâche : </label>
+                    <?php $requete = $connexion->prepare("SELECT ID, Nom FROM taches");
+                        $requete->execute(); ?>
                     <select name="tache" id="tache">
+                        <option><?php echo $ligne['ID'], $ligne['Nom'];?>
                     </select>
                 </p>
                 <p>

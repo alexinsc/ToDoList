@@ -1,47 +1,107 @@
 /* styles.css */
 
+/* Couleurs principales */
+:root {
+    --gris-fonce: #333333;      /* Couleur gris foncé */
+    --gris-moyen: #666666;      /* Couleur gris moyen */
+    --gris-clair: #f2f2f2;      /* Couleur gris clair */
+    --blanc: #ffffff;           /* Couleur blanche */
+    --rose: #ff7b9c;            /* Rose doux */
+}
+
+/* Fond de couleur neutre */
+body {
+    background-color: #eaeaea;  /* Gris moyen */
+}
+
 /* Style du titre h1 */
 h1 {
     text-align: center;
-    font-size: 2em;
+    font-size: 2.5em;
     margin-bottom: 20px;
+    color: var(--rose);         /* Utilisation de la couleur rose définie */
 }
 
 /* Style du formulaire */
 form {
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
+    background-color: var(--gris-clair);
+    padding: 30px;
+    border: 2px solid var(--gris-moyen);
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Style des champs du formulaire */
 fieldset {
-    border: 1px solid #ccc;
+    border: none;
     padding: 20px;
     margin-bottom: 20px;
+    background-color: var(--blanc);
+    border-radius: 8px;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    color: var(--gris-fonce);
 }
 
 input[type="text"],
 select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+    width: calc(100% - 16px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--gris-moyen);
     border-radius: 4px;
 }
 
 input[type="submit"] {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    padding: 12px 24px;
+    background-color: var(--rose);
+    color: var(--blanc);
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.2em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--gris-fonce);
+}
+
+/* Styles pour les cellules de tableau d'actions */
+.actions-cell {
+    background-color: var(--gris-fonce);
+    color: var(--blanc);
+    text-align: center;
+}
+
+/* Style des tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid var(--gris-moyen);
+}
+
+th, td {
+    padding: 14px;
+    text-align: center;  /* Centre le contenu des cellules */
+    font-size: 0.9em;
+}
+
+/* Ajout de la propriété text-align: center; pour le titre du tableau */
+h2 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: var(--gris-fonce);
 }
 
 /* Style des conteneurs des tableaux de tâches */
@@ -53,10 +113,85 @@ input[type="submit"] {
 
 h2 {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.8em;
     margin-bottom: 20px;
-}   
+    color: var(--gris-fonce);
+}
 
-.changement{
-    align-items: center;
+.changement {
+    display: inline-block;
+    background-color: var(--gris-fonce);
+    color: var(--blanc);
+    padding: 12px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.changement:hover {
+    background-color: var(--rose);
+}
+
+
+
+/* Styles des formulaires */
+form, #task-form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    background-color: var(--gris-clair);
+    border: 2px solid var(--gris-moyen);
+}
+
+#task-form {
+    background-color: var(--blanc);
+    border: 2px solid var(--gris-moyen);
+}
+
+/* Styles des champs du formulaire */
+fieldset {
+    border: none;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: var(--blanc);
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--gris-fonce);
+}
+
+input[type="text"],
+select {
+    width: calc(100% - 16px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--gris-moyen);
+    border-radius: 4px;
+}
+
+/* Styles pour les conteneurs des tableaux de tâches */
+.tasks-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.tasks-container > div {
+    background-color: var(--blanc);
+    padding: 20px;
+    border: 1px solid var(--gris-moyen);
+    border-radius: 8px;
+    width: 100%;
 }
