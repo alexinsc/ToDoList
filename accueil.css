@@ -1,14 +1,18 @@
-/* Centrer tous les éléments au milieu de la page */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+/* Réinitialisation des marges et des rembourrages */
+body, h1, button, input, select {
     margin: 0;
-    /* Fond de couleur neutre */
-    background-color: #eaeaea;  /* Gris moyen */
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1em; /* Agrandir la taille du titre */
+    margin: 5px 0; /* Ajuster les marges du titre */
+    font-family: 'Georgia', 'Times', serif; /* Choisir une police plus esthétique pour le titre */
+    text-align: center; /* Centrer le texte horizontalement */
+}
 
-} 
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #eaeaea;  /* Gris moyen */
+}
 
 /* Couleurs principales */
 :root {
@@ -17,48 +21,68 @@ body {
     --gris-clair: #f2f2f2;      /* Couleur gris clair */
     --blanc: #ffffff;           /* Couleur blanche */
     --rose: #ff7b9c;            /* Rose doux */
+    --noir: #000000;            /* Noir */
+}
+
+/* Centrer tous les éléments au milieu de la page */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 30vh;
+    flex-direction: column; /* Nouvelle ligne : changer la direction de flex à la colonne */
 }
 
 /* Ajout du cadre autour du conteneur */
-.container {
-    border: 1px solid black;
-    padding: 200px; /* Ajouter un espace autour des éléments à l'intérieur du cadre */
+.container-inner {
+    border: 1px solid var(--noir);
+    padding: 40px; /* Ajouter un espace autour des éléments à l'intérieur du cadre */
     text-align: center; /* Centrer le texte à l'intérieur du conteneur */
-    border-radius: 10px; /* Arrondir les bords */
 }
 
 /* Style de l'en-tête */
 h1 {
-    font-size: 5em; /* Agrandir la taille du titre */
-    margin: 90px 0; /* Ajuster les marges du titre */
-    color: var(--rose);
-    font-family: 'Georgia', 'Times', serif; /* Choisir une police plus esthétique pour le titre */
-    margin-top: -120px;
+    font-size: 3em; /* Agrandir la taille du titre */
+    margin: 30px 0; /* Ajuster les marges du titre */
+    color: var(--rose); /* Conserver la couleur rose pour le titre */
+    justify-content: center;
 }
 
-
-/* Style de la barre de navigation (les boutons) */
-.buttons-container {
-    display: flex;
-    justify-content: center; /* Centrer les boutons horizontalement */
-    margin-top: 50px; /* Ajouter un espace entre le titre et les boutons */
-    background-color: var(--gris-fonce); /* Couleur gris foncé au survol */
-    color: var(--blanc);
-    margin: 0 10px; /* Ajouter de l'espace entre les boutons */
-    
-    
-}
-
-
-/* Style des cases autour des boutons */
-button {
+/* Style des boutons */
+button, input[type="submit"] {
     background-color: var(--gris-fonce);
     color: var(--blanc);
     text-align: center;
-    padding: 36px 56px; /* Ajuster la taille des boutons */
-    font-family: 'Georgia', 'Times', serif;
-    font-size: 2em; /* Agrandir la taille du titre */
-    border-radius: 10px; /* Arrondir les bords */
-    
+    padding: 14px 24px; /* Ajuster la taille des boutons */
+    margin: 10px; /* Ajouter de l'espace entre les boutons */
+    border: 2px solid var(--rose);
+    border-radius: 8px; /* Arrondir les bords */
+    cursor: pointer;
+    font-size: 1.2em; /* Agrandir la taille du texte des boutons */
+    transition: background-color 0.3s, color 0.3s;
 }
 
+/* Style des champs de saisie */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 3px 0;
+    border: 2px solid var(--gris-fonce); /* Utiliser la couleur gris foncé */
+    border-radius: 8px; /* Arrondir les bords */
+}
+
+/* Style de la liste déroulante */
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 2px 0; /* Nouvelle ligne : réduire la marge pour remonter la liste déroulante */
+    border: 2px solid var(--gris-fonce); /* Utiliser la couleur gris foncé */
+    border-radius: 8px; /* Arrondir les bords */
+}
+
+/* Style du message d'erreur */
+span.error {
+    color: var(--rose);
+    margin-top: 5px;
+    display: block;
+}
