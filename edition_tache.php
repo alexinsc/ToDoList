@@ -125,4 +125,19 @@
     }
     return true; // Autorise l'envoi du formulaire
     }
+
+    function autoFillFields() { // Remplit les champs du formulaire avec les valeurs de la tâche sélectionnée
+        var selectBox = document.getElementById("tache-select"); // Obtient la selection de la liste déroulante
+        var selectedIndex = selectBox.selectedIndex; // Obtient l'index de l'élément sélectionné
+
+        // Obtient les valeurs des champs Nom, Description et État de la tâche sélectionnée
+        var nomTache = selectBox.options[selectedIndex].text.split(' : ')[0]; // On sépare le nom de la description
+        var descriptionTache = selectBox.options[selectedIndex].text.split(' : ')[1]; // On sépare la description du nom
+        var etatTache = selectBox.options[selectedIndex].getAttribute("etat"); // On obtient l'état de la tâche
+
+        // Remplit les champs du formulaire avec les valeurs obtenues
+        document.getElementById("nouveau_nom").value = nomTache; // On remplit le champ du nom de la tâche
+        document.getElementById("nouvelle_description").value = descriptionTache; // On remplit le champ de la description de la tâche
+    }
+    document.getElementById("tache-select").addEventListener("change", autoFillFields); // Appelle la fonction autoFillFields() lorsque l'utilisateur sélectionne une tâche
 </script>
