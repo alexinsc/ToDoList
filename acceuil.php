@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>To do list interactive</title>
-    <link href="styles.css" type="text/css" rel="stylesheet">
+    <link href="accueil.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
