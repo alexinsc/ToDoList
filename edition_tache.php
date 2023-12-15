@@ -1,4 +1,5 @@
 <?php $connexion = new PDO("mysql:host=localhost;dbname=wd-projet", 'root'); ?>
+$idUtilisateur = $_GET['valeur_transmise'];?>
 
 
 <!DOCTYPE html>
@@ -7,7 +8,7 @@
     <meta charset="utf-8">
     <title>To do list interactive</title>
     <link href="styles.css" type="text/css" rel="stylesheet">
-    <button onclick="window.location.href = 'http://localhost/projetWD/acceuil.php';" class="changement">Acceuil</button>
+    <button onclick="window.location.href = 'http://localhost/projetWD/accueil.php';"  class="changement">Acceuil</button>
     <button onclick="window.location.href = 'http://localhost/projetWD/projet_WB.php';" class="changement">Ajouter une tâche</button>
     <button onclick="window.location.href = 'http://localhost/projetWD/edition_tache.php';" class="changement">Modifier une tâche</button>
     <button onclick="window.location.href = 'http://localhost/projetWD/delete_tache.php';" class="changement">Supprimer une tâche</button>
@@ -22,7 +23,7 @@
                     <select id="tache-select" name="id_tache">
                         <option value="">Sélectionner une tâche</option>
                         <?php
-                        $requete = $connexion->prepare("SELECT ID, Nom, Description FROM taches");
+                        $requete = $connexion->prepare("SELECT ID, Nom, Description FROM taches JOIN utilisateurs ON taches.Utilisateur = utilisateurs.ID ");
                         $requete->execute();
                         while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
                             echo '<option value="' . $ligne['ID'] . '">' . $ligne['Nom'] . ' : ' . $ligne['Description'] . '</option>';
