@@ -1,23 +1,22 @@
 <?php
-// Connect to the database
 $connexion = new PDO('mysql:host=localhost;dbname=wd-projet', 'root');
 
-if (isset($_POST['id_tache']) && isset($_POST['nouveau_nom']) && isset($_POST['nouvelle_description']) && isset($_POST['etat_tache'])) {
-    $id = $_POST['id_tache'];
-    $nouveauNom = $_POST['nouveau_nom'];
-    $nouvelleDescription = $_POST['nouvelle_description'];
-    $etatTache = $_POST['etat_tache'];
+if (isset($_POST['id_tache']) && isset($_POST['nouveau_nom']) && isset($_POST['nouvelle_description']) && isset($_POST['etat_tache'])) { // Verifie que les informations nécessaires sont fournies
+    $id = $_POST['id_tache']; // Obtient l'ID de la tâche à modifier
+    $nouveauNom = $_POST['nouveau_nom']; // Obtient le nouveau nom de la tâche
+    $nouvelleDescription = $_POST['nouvelle_description']; // Obtient la nouvelle description de la tâche
+    $etatTache = $_POST['etat_tache']; // Obtient le nouvel état de la tâche
 
-    // Prepare and execute the query to update task details including the state
-    $requete = $connexion->prepare('UPDATE taches SET Nom = :nouveau_nom, Description = :nouvelle_description, Etat = :etat_tache WHERE ID = :id');
-    $requete->bindParam(':nouveau_nom', $nouveauNom);
-    $requete->bindParam(':nouvelle_description', $nouvelleDescription);
-    $requete->bindParam(':etat_tache', $etatTache);
-    $requete->bindParam(':id', $id, PDO::PARAM_INT);
-    $requete->execute();
+    // Prépare et exécute la requête SQL pour modifier les détails de la tâche
+    $requete = $connexion->prepare('UPDATE taches SET Nom = :nouveau_nom, Description = :nouvelle_description, Etat = :etat_tache WHERE ID = :id'); // Requête SQL pour modifier les détails de la tâche
+    $requete->bindParam(':nouveau_nom', $nouveauNom); // Lie le paramètre :nouveau_nom à la variable $nouveauNom
+    $requete->bindParam(':nouvelle_description', $nouvelleDescription); // Lie le paramètre :nouvelle_description à la variable $nouvelleDescription
+    $requete->bindParam(':etat_tache', $etatTache); // Lie le paramètre :etat_tache à la variable $etatTache
+    $requete->bindParam(':id', $id, PDO::PARAM_INT); // Lie le paramètre :id à la variable $id, en spécifiant que c'est un entier
+    $requete->execute(); // Exécute la requête SQL
 
     // Redirect to the list of tasks after update
-    header('Location: edition_tache.php');
+    header('Location: edition_tache.php'); // Redirige vers la liste des tâches après la mise à jour
 } else {
     echo 'Error: Incomplete information provided for update';
 }
