@@ -23,7 +23,7 @@ $idUtilisateur = $_GET['valeur_transmise'];?>
                     <select id="tache-select" name="id_tache">
                         <option value="">Sélectionner une tâche</option>
                         <?php
-                        $requete = $connexion->prepare("SELECT ID, Nom, Description FROM taches JOIN utilisateurs ON taches.Utilisateur = utilisateurs.ID ");
+                        $requete = $connexion->prepare("SELECT ID, Nom, Description FROM taches WHERE Utilisateur = $idUtilisateur ");
                         $requete->execute();
                         while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
                             echo '<option value="' . $ligne['ID'] . '">' . $ligne['Nom'] . ' : ' . $ligne['Description'] . '</option>';
@@ -55,7 +55,7 @@ $idUtilisateur = $_GET['valeur_transmise'];?>
             <!-- Liste de tâches en cours -->
             <div>
                 <h2>Tâches à faire</h2>
-                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'a_faire'");
+                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'a_faire',Utilisateur = $idUtilisateur");
                         $requete->execute(); ?>
                 <table border="1">
                     <tr>
@@ -76,7 +76,7 @@ $idUtilisateur = $_GET['valeur_transmise'];?>
             <!-- Liste de tâches en cours -->
             <div>
                 <h2>Tâches en cours</h2>
-                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'en_cours'");
+                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE (Etat = 'en_cours'AND Utilisateur = $idUtilisateur)");
                         $requete->execute(); ?>
                 <table border="1">
                     <tr>
@@ -96,7 +96,7 @@ $idUtilisateur = $_GET['valeur_transmise'];?>
 
             <div>
                 <h2>Tâches terminées</h2>
-                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'termine'");
+                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE (Etat = 'termine'AND Utilisateur = $idUtilisateur)");
                         $requete->execute(); ?>
                 <table border="1">
                     <tr>

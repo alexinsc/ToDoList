@@ -51,7 +51,7 @@
           ?>
           </select>
         </p>
-        <input type="submit" id ="submit" value="Ajouter" />
+        <input type="submit" id ="submit" value="Sélectionner" />
       </fieldset>
     </form>
   </div>
