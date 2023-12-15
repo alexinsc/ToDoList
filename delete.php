@@ -7,7 +7,7 @@ if (isset($_POST['id_tache'])) { // Vérifie que l'ID de la tâche à supprimer 
     $requete = $connexion->prepare('DELETE FROM taches WHERE ID = :id'); // Requête SQL pour supprimer la tâche
     $requete->bindParam(':id', $id, PDO::PARAM_INT); // Lie le paramètre :id à la variable $id, en spécifiant que c'est un entier
     $requete->execute(); // Exécute la requête SQL
-    header('Location: http://localhost/projetWD/delete_tache.php'); // Redirige vers la liste des tâches après la suppression
+    header('Location: http://localhost/projetWD/acceuil.php'); // Redirige vers la liste des tâches après la suppression
 	exit();
     } else {
     echo 'Error: No ID provided';

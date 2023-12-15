@@ -8,7 +8,7 @@ try {
 
     $stmt = $pdo->prepare("INSERT INTO taches (Nom, Description, Etat) VALUES (?, ?, ?)"); // Requête SQL pour créer une nouvelle tâche
 	$stmt->execute([$titre, $description, $etat]); // Exécute la requête SQL
-	header('Location: http://localhost/projetWD/projet_WB.php'); // Redirige vers la liste des tâches après la création
+	header('Location: http://localhost/projetWD/acceuil.php'); // Redirige vers la liste des tâches après la création
 	exit();
 
     } catch (\Throwable $th) {

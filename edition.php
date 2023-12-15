@@ -16,7 +16,7 @@ if (isset($_POST['id_tache']) && isset($_POST['nouveau_nom']) && isset($_POST['n
     $requete->execute(); // Exécute la requête SQL
 
     // Redirect to the list of tasks after update
-    header('Location: edition_tache.php'); // Redirige vers la liste des tâches après la mise à jour
+    header('Location: http://localhost/projetWD/acceuil.php'); // Redirige vers la liste des tâches après la mise à jour
 } else {
     echo 'Error: Incomplete information provided for update';
 }

@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <title>To do list interactive</title>
     <link href="styles.css" type="text/css" rel="stylesheet">
+    <button onclick="window.location.href = 'http://localhost/projetWD/acceuil.php';" class="changement">Acceuil</button>
     <button onclick="window.location.href = 'http://localhost/projetWD/projet_WB.php';" class="changement">Ajouter une tâche</button>
     <button onclick="window.location.href = 'http://localhost/projetWD/edition_tache.php';" class="changement">Modifier une tâche</button>
     <button onclick="window.location.href = 'http://localhost/projetWD/delete_tache.php';" class="changement">Supprimer une tâche</button>
@@ -116,14 +117,12 @@
 </html>
 
 <script>
-    function validateForm() {
-        var selectedTask = document.getElementById("tache-select").value;
-        if (selectedTask === "") {
-            alert("Veuillez sélectionner une tâche à modifier");
-            return false;
-        }
-        // Autres validations éventuelles à ajouter ici
-
-        return true;
+    function validateForm() { // Vérifie que l'utilisateur a sélectionné une tâche à modifier
+    var selectedTask = document.getElementById("tache-select").value; // Obtient la valeur de l'élément sélectionné
+    if (selectedTask === "") { // Si aucune tâche n'est sélectionnée
+        alert("Veuillez sélectionner une tâche à modifier"); // Affiche un message d'erreur
+        return false; // Empêche le formulaire d'être envoyé
+    }
+    return true; // Autorise l'envoi du formulaire
     }
 </script>
