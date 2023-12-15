@@ -22,7 +22,7 @@
                     <select id="tache-select" name="id_tache"> <!-- Ajout de l'attribut 'name' -->
                         <option value="">Sélectionner une tâche</option>
                         <?php
-                        $requete = $connexion->prepare("SELECT ID, Nom, Description FROM taches");
+                        $requete = $connexion->prepare("SELECT ID, Nom, Description FROM taches WHERE ID = $idUtilisateur");
                         $requete->execute();
                         while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
                             echo '<option value="' . $ligne['ID'] . '">' . $ligne['Nom'] . ' : ' . $ligne['Description'] . '</option>';
@@ -39,7 +39,7 @@
             <!-- Liste de tâches en cours -->
             <div>
                 <h2>Tâches à faire</h2>
-                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'a_faire'");
+                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'a_faire' AND ID = $idUtilisateur");
                         $requete->execute(); ?>
                 <table border="1">
                     <tr>
@@ -60,7 +60,7 @@
             <!-- Liste de tâches en cours -->
             <div>
                 <h2>Tâches en cours</h2>
-                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'en_cours'");
+                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'en_cours' AND ID = $idUtilisateur");
                         $requete->execute(); ?>
                 <table border="1">
                     <tr>
@@ -80,7 +80,7 @@
 
             <div>
                 <h2>Tâches terminées</h2>
-                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'termine'");
+                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'termine' AND ID = $idUtilisateur");
                         $requete->execute(); ?>
                 <table border="1">
                     <tr>
