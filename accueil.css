@@ -1,0 +1,64 @@
+/* Centrer tous les éléments au milieu de la page */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    /* Fond de couleur neutre */
+    background-color: #eaeaea;  /* Gris moyen */
+
+} 
+
+/* Couleurs principales */
+:root {
+    --gris-fonce: #333333;      /* Couleur gris foncé */
+    --gris-moyen: #666666;      /* Couleur gris moyen */
+    --gris-clair: #f2f2f2;      /* Couleur gris clair */
+    --blanc: #ffffff;           /* Couleur blanche */
+    --rose: #ff7b9c;            /* Rose doux */
+}
+
+/* Ajout du cadre autour du conteneur */
+.container {
+    border: 1px solid black;
+    padding: 200px; /* Ajouter un espace autour des éléments à l'intérieur du cadre */
+    text-align: center; /* Centrer le texte à l'intérieur du conteneur */
+    border-radius: 10px; /* Arrondir les bords */
+}
+
+/* Style de l'en-tête */
+h1 {
+    font-size: 5em; /* Agrandir la taille du titre */
+    margin: 90px 0; /* Ajuster les marges du titre */
+    color: var(--rose);
+    font-family: 'Georgia', 'Times', serif; /* Choisir une police plus esthétique pour le titre */
+    margin-top: -120px;
+}
+
+
+/* Style de la barre de navigation (les boutons) */
+.buttons-container {
+    display: flex;
+    justify-content: center; /* Centrer les boutons horizontalement */
+    margin-top: 50px; /* Ajouter un espace entre le titre et les boutons */
+    background-color: var(--gris-fonce); /* Couleur gris foncé au survol */
+    color: var(--blanc);
+    margin: 0 10px; /* Ajouter de l'espace entre les boutons */
+    
+    
+}
+
+
+/* Style des cases autour des boutons */
+button {
+    background-color: var(--gris-fonce);
+    color: var(--blanc);
+    text-align: center;
+    padding: 36px 56px; /* Ajuster la taille des boutons */
+    font-family: 'Georgia', 'Times', serif;
+    font-size: 2em; /* Agrandir la taille du titre */
+    border-radius: 10px; /* Arrondir les bords */
+    
+}
+
