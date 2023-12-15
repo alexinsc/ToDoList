@@ -1,11 +1,11 @@
-/* Réinitialisation des marges et des rembourrages */
+
 body, h1, button, input, select {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-size: 1em; /* Agrandir la taille du titre */
     margin: 5px 0; /* Ajuster les marges du titre */
-    font-family: 'Georgia', 'Times', serif; /* Choisir une police plus esthétique pour le titre */
+    font-family: 'Georgia', 'Times', serif; /* Choisir une police */
     text-align: center; /* Centrer le texte horizontalement */
 }
 
@@ -31,6 +31,7 @@ body {
     align-items: center;
     min-height: 30vh;
     flex-direction: column; /* Nouvelle ligne : changer la direction de flex à la colonne */
+    margin-top: 20px; /* Ajouter de l'espace entre le conteneur et les boutons */
 }
 
 /* Ajout du cadre autour du conteneur */
