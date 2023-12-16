@@ -1,5 +1,5 @@
-<?php $connexion = new PDO("mysql:host=localhost;dbname=wd-projet", 'root');
-$idUtilisateur = $_GET['valeur_transmise'];?>
+<?php $connexion = new PDO("mysql:host=localhost;dbname=wd-projet", 'root'); ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -7,10 +7,10 @@ $idUtilisateur = $_GET['valeur_transmise'];?>
     <meta charset="utf-8">
     <title>To do list interactive</title>
     <link href="styles.css" type="text/css" rel="stylesheet">
-    <button onclick="window.location.href = 'http://localhost/projetWD/accueil.php';" class="changement">Acceuil</button>
-    <button onclick="window.location.href = 'http://localhost/projetWD/projet_WB.php?valeur_transmise=<?php echo $idUtilisateur?>';" class="changement">Ajouter une tâche</button>
-    <button onclick="window.location.href = 'http://localhost/projetWD/edition_tache.php?valeur_transmise=<?php echo $idUtilisateur?>';" class="changement">Modifier une tâche</button>
-    <button onclick="window.location.href = 'http://localhost/projetWD/delete_tache.php?valeur_transmise=<?php echo $idUtilisateur?>';" class="changement">Supprimer une tâche</button>
+    <button onclick="window.location.href = 'http://localhost/projetWD/accueil.php';" class="changement">Ajouter une tâche</button>
+    <button onclick="window.location.href = 'http://localhost/projetWD/projet_WB.php';" class="changement">Ajouter une tâche</button>
+    <button onclick="window.location.href = 'http://localhost/projetWD/edition_tache.php';" class="changement">Modifier une tâche</button>
+    <button onclick="window.location.href = 'http://localhost/projetWD/delete_tache.php';" class="changement">Supprimer une tâche</button>
 </head>
 
 <body>
@@ -22,7 +22,7 @@ $idUtilisateur = $_GET['valeur_transmise'];?>
                     <select id="tache-select" name="id_tache"> <!-- Ajout de l'attribut 'name' -->
                         <option value="">Sélectionner une tâche</option>
                         <?php
-                        $requete = $connexion->prepare("SELECT ID, Nom, Description FROM taches WHERE ID = $idUtilisateur");
+                        $requete = $connexion->prepare("SELECT ID, Nom, Description FROM taches");
                         $requete->execute();
                         while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
                             echo '<option value="' . $ligne['ID'] . '">' . $ligne['Nom'] . ' : ' . $ligne['Description'] . '</option>';
@@ -39,7 +39,7 @@ $idUtilisateur = $_GET['valeur_transmise'];?>
             <!-- Liste de tâches en cours -->
             <div>
                 <h2>Tâches à faire</h2>
-                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'a_faire', ID = $idUtilisateur");
+                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'a_faire'");
                         $requete->execute(); ?>
                 <table border="1">
                     <tr>
@@ -60,7 +60,7 @@ $idUtilisateur = $_GET['valeur_transmise'];?>
             <!-- Liste de tâches en cours -->
             <div>
                 <h2>Tâches en cours</h2>
-                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'en_cours', ID = $idUtilisateur");
+                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'en_cours'");
                         $requete->execute(); ?>
                 <table border="1">
                     <tr>
@@ -80,7 +80,7 @@ $idUtilisateur = $_GET['valeur_transmise'];?>
 
             <div>
                 <h2>Tâches terminées</h2>
-                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'termine', ID = $idUtilisateur");
+                <?php $requete = $connexion->prepare("SELECT Nom, Description, Etat FROM taches WHERE Etat = 'termine'");
                         $requete->execute(); ?>
                 <table border="1">
                     <tr>
